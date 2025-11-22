@@ -1,5 +1,5 @@
 # pbs-redirector
-Small repo to properly redirect domains to other locations
+Small tool to properly redirect domains to other locations
 
 ## How to add another redirect
 
