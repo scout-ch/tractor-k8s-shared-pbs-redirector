@@ -6,12 +6,10 @@ metadata:
   namespace: pbs-redirector
 spec:
   interval: 10m
-  chart: pbs-redirector
+  chart: ./helm
   sourceRef:
     kind: GitRepository
     name: pbs-redirector
-  valuesFiles:
-    - values.yaml
 ---
 apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
