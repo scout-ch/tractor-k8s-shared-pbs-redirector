@@ -1,0 +1,31 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: {{ .Chart.Name }}
+  namespace: {{ .Chart.Name }}
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt
+spec:
+  gatewayClassName: traefik
+  # Only Routes from the same namespace are allowed.
+  listeners:
+    # optional, only if you want to expose port 80 directly.
+    - name: http
+      protocol: HTTP
+      port: 8000 # Default traefik helm chart port, will be mapped to 80
+      allowedRoutes:
+        namespaces:
+          from: Same
+
+    - name: https
+      protocol: HTTPS
+      port: 8443 # Default traefik helm chart port, will be mapped to 443
+      tls:
+        mode: Terminate
+        certificateRefs:
+          - name: secret-tls
+            namespace: {{ .Chart.Name }}
+
+      allowedRoutes:
+        namespaces:
+          from: Same

@@ -1,0 +1,28 @@
+{{- range .Values.redirects }}
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: HTTPRoute
+metadata:
+  name: {{ .name }}-redirector-https
+  namespace: {{ $.Chart.Name }}
+spec:
+  hostnames:
+    {{- range .hostnames }}
+    - {{ . }}
+    {{- end }}
+  parentRefs:
+    - name: {{ $.Chart.Name }}
+      sectionName: https
+      kind: Gateway
+  rules:
+    - filters:
+        - type: RequestRedirect
+          requestRedirect:
+            hostname: {{ .target }}
+            {{- if not (empty .path) }}
+            path:
+              type: ReplaceFullPath
+              replaceFullPath: {{ .path }}
+            {{- end }}
+            statusCode: {{ .statusCode }}
+{{- end }}
