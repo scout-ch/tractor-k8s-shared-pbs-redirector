@@ -1,14 +1,5 @@
 ---
 apiVersion: source.toolkit.fluxcd.io/v1
-kind: HelmRepository
-metadata:
-  name: pbs-redirector
-  namespace: pbs-redirector
-spec:
-  interval: 10m
-  url: https://github.com/scout-ch/tractor-k8s-shared-pbs-redirector
----
-apiVersion: source.toolkit.fluxcd.io/v1
 kind: HelmChart
 metadata:
   name: pbs-redirector
@@ -17,7 +8,7 @@ spec:
   interval: 10m
   chart: pbs-redirector
   sourceRef:
-    kind: HelmRepository
+    kind: GitRepository
     name: pbs-redirector
   valuesFiles:
     - values.yaml
