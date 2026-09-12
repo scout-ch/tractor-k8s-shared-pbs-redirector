@@ -1,0 +1,16 @@
+redirects:
+
+  - name: hug
+    hostnames:
+      - hug.scout.ch
+      - order.hug.scout.ch
+    target: app.tooljet.com
+    path: /applications/pbs-hug-order
+    statusCode: 301
+
+  - name: thilo
+    hostnames:
+      - thilo.scout.ch
+    target: thilo.scouts.ch
+    statusCode: 301
+  
