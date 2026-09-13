@@ -17,6 +17,8 @@ Add another entry to the `values.yaml` file:
     target: example.scouts.ch
     # optional: if redirect to a subpath
     path: /optional/example
+    sourceScheme: https
+    targetScheme: https
     # http status code to be used. should be 301 (Moved Permanently) or 302 (Temporary)
     statusCode: 301
 

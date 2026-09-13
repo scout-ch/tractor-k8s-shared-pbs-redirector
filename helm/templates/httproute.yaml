@@ -12,12 +12,13 @@ spec:
     {{- end }}
   parentRefs:
     - name: {{ $.Chart.Name }}
-      sectionName: https
+      sectionName: {{ .sourceScheme }}
       kind: Gateway
   rules:
     - filters:
         - type: RequestRedirect
           requestRedirect:
+            scheme: {{ .targetScheme }}
             hostname: {{ .target }}
             {{- if not (empty .path) }}
             path:

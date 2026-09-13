@@ -6,11 +6,23 @@ redirects:
       - order.hug.scout.ch
     target: app.tooljet.com
     path: /applications/pbs-hug-order
+    sourceScheme: https
+    targetScheme: https
     statusCode: 301
 
   - name: thilo
     hostnames:
       - thilo.scout.ch
     target: thilo.scouts.ch
+    sourceScheme: https
+    targetScheme: https
+    statusCode: 301
+  
+  - name: thilo
+    hostnames:
+      - thilo.scout.ch
+    target: thilo.scouts.ch
+    sourceScheme: http
+    targetScheme: https
     statusCode: 301
   
