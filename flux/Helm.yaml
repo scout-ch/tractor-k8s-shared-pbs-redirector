@@ -22,3 +22,4 @@ spec:
     kind: HelmChart
     name: pbs-redirector
     namespace: pbs-redirector
+  serviceAccountName: pbs-redirector
